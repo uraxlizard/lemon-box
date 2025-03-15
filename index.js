@@ -1,21 +1,26 @@
 const { app, BrowserWindow } = require("electron");
 
-// Enable live reloading
-require("electron-reload")(__dirname, {
-    electron: require(`${__dirname}/node_modules/electron`)
-});
+if (process.env.NODE_ENV === "development") {
+    try {
+        require("electron-reload")(__dirname, {
+            electron: require(`${__dirname}/node_modules/electron`),
+        });
+    } catch (err) {
+        console.warn("Electron Reload not available in production.");
+    }
+}
 
 let mainWindow;
 
 app.whenReady().then(() => {
     mainWindow = new BrowserWindow({
-        width: 700, // Match minWidth
-        height: 700, // Match minHeight
-        minWidth: 700, // Consistent with initial width
-        minHeight: 700, // Consistent with initial height
-        title: "Lemon Box - Bulgarian Radio Player",
+        width: 700,
+        height: 500,
+        minWidth: 700,
+        minHeight: 500,
+        title: "Lemon Box",
         autoHideMenuBar: true,
-        resizable: false, // Prevent resizing if needed
+        resizable: false,
         frame: false,
         webPreferences: {
             nodeIntegration: true,

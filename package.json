@@ -6,7 +6,8 @@
     "start": "concurrently \"node server.js\" \"electron .\"",
     "dev": "concurrently \"node server.js\" \"electron .\"",
     "server": "node server.js",
-    "electron": "electron ."
+    "electron": "electron .",
+    "package-win": "electron-packager . LemonBox --platform=win32 --arch=x64 --out=dist --overwrite --icon=assets/img/lemon.ico"
   },
   "keywords": [],
   "author": "",
@@ -14,12 +15,13 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
-    "electron": "^35.0.1",
     "express": "^4.21.2",
     "icy": "^2.1.0"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
+    "electron": "^35.0.1",
+    "electron-packager": "^17.1.2",
     "electron-reload": "^2.0.0-alpha.1"
   }
 }
