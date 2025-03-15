@@ -1,0 +1,25 @@
+{
+  "name": "radio-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"node server.js\" \"electron .\"",
+    "dev": "concurrently \"node server.js\" \"electron .\"",
+    "server": "node server.js",
+    "electron": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "electron": "^35.0.1",
+    "express": "^4.21.2",
+    "icy": "^2.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron-reload": "^2.0.0-alpha.1"
+  }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lemon Box - Български Радио Плейър</title>
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <div class="title-bar">
+        <span><img src="assets/img/lemon.png" alt="logo"> Lemon Box - Всички Български Радиа в Едно</span>
+        <button onclick="window.close()">✖</button>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+        <div class="card">
+            <h4 class="mb-3">Изберете Радио</h4>
+
+            <!-- Custom Dropdown -->
+            <div class="custom-dropdown" id="dropdown">
+                <div class="dropdown-selected p-2" id="selectedStation">
+                    <span>--- Моля, изберете от радиата по-долу ---</span>
+                </div>                
+                <div class="dropdown-list mt-1 p-2" id="stationList">
+                    <div data-url="http://play.global.audio/nova128">
+                        <img src="assets/img/logos/radio-nova.png" alt="Radio Nova"> Radio Nova
+                    </div>
+                    <div data-url="http://play.global.audio/city128">
+                        <img src="assets/img/logos/city-radio.jpg" alt="City Radio"> City Radio
+                    </div>
+                    <div data-url="http://play.global.audio/radio1128">
+                        <img src="assets/img/logos/radio-1.jpg" alt="Radio 1"> Radio 1
+                    </div>
+                    <div data-url="http://play.global.audio/bgradio128">
+                        <img src="assets/img/logos/bg-radio.jpg" alt="BG Radio"> BG Radio
+                    </div>
+                    <div data-url="http://play.global.audio/nrj128">
+                        <img src="assets/img/logos/radio-energy.png" alt="NRJ"> Radio Energy (NRJ)
+                    </div>
+                    <div data-url="http://play.global.audio/veronika128">
+                        <img src="assets/img/logos/radio-veronika.jpg" alt="Veronika"> Radio Veronika
+                    </div>
+                </div>
+            </div>
+
+            <audio id="radioPlayer" controls class="mt-3">
+                <source src="http://play.global.audio/nova128" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <footer>
+        <p>© Всички права запазени 2025<br />Създадено от <strong>ZEN CODING GARDEN LTD</strong><br />
+            Версия на приложението: v1.0
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- External Scripts -->
+    <script src="assets/js/scripts.js"></script>
+
+</body>
+</html>
