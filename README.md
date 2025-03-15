@@ -39,6 +39,9 @@ npm install
 
 # Start the App (Runs both Electron & Metadata Server)
 npm start
+
+# Compile(Build) binary (EXE)
+npm run package-win
 ```
 
 ## Project Structure
@@ -51,12 +54,13 @@ npm start
 │   │   ├── style.css
 │   ├── img/
 │   │   ├── lemon.png
+│   │   ├── lemon.ico
 │   ├── js/
 │   │   ├── bootstrap.bundle.min.js
 │   │   ├── scripts.js
 │── index.html
-│── server.js  # ICY Metadata Fetcher (Node.js)
-│── main.js  # Electron App
+│── server.js   # ICY Metadata Fetcher (Node.js)
+│── index.js    # Electron App
 │── package.json
 │── README.md
 │── LICENSE
