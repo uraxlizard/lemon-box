@@ -1,18 +1,42 @@
 {
   "name": "radio-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "concurrently \"node server.js\" \"electron .\"",
     "dev": "concurrently \"node server.js\" \"electron .\"",
     "server": "node server.js",
     "electron": "electron .",
-    "package-win": "electron-packager . LemonBox --platform=win32 --arch=x64 --out=dist --overwrite --icon=assets/img/lemon.ico"
+    "package-win": "electron-packager . LemonBox --platform=win32 --arch=x64 --out=dist --overwrite --icon=assets/img/lemon.ico",
+    "build": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "com.zencodinggardenltd.lemonbox",
+    "productName": "Lemon Box",
+    "win": {
+        "target": "nsis",
+        "icon": "assets/img/lemon.ico"
+    },
+    "files": [
+        "!node_modules/electron-reload/**",
+        "!node_modules/.cache/**",
+        "!dist/**",
+        "main.js",
+        "server.js",
+        "index.html",
+        "assets/**"
+    ],
+    "extraResources": [
+        {
+            "from": "server.js",
+            "to": "server.js"
+        }
+    ]
   },
   "keywords": [],
-  "author": "",
+  "author": "Angel Boyarov",
   "license": "ISC",
-  "description": "",
+  "description": "Bulgarian Radio Player",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
@@ -21,6 +45,7 @@
   "devDependencies": {
     "concurrently": "^9.1.2",
     "electron": "^35.0.1",
+    "electron-builder": "^25.1.8",
     "electron-packager": "^17.1.2",
     "electron-reload": "^2.0.0-alpha.1"
   }

@@ -8,7 +8,6 @@ Lemon Box is an Electron-based **Bulgarian Radio Player** that allows users to s
 - 🛰 **Now Playing Metadata** (Displays current and next song using ICY metadata)
 - 🖥 **Windows 11 Glassmorphism UI** (Smooth, modern design)
 - 🎚 **Custom Dropdown with Station Logos**
-- 📌 **System Tray Support** (Minimizes to tray instead of closing)
 - 🏷 **MIT Licensed & Open Source**
 
 ## Features
@@ -60,7 +59,7 @@ npm run package-win
 │   │   ├── scripts.js
 │── index.html
 │── server.js   # ICY Metadata Fetcher (Node.js)
-│── index.js    # Electron App
+│── main.js     # Electron App
 │── package.json
 │── README.md
 │── LICENSE
