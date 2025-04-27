@@ -17,6 +17,9 @@ Lemon Box is an Electron-based **Bulgarian Radio Player** that allows users to s
 - **Draggable Window** (Electron window can be moved via title bar)
 - **Bootstrap 5 Integration** (Clean, responsive UI)
 - **Electron + Node.js Backend** (Fetches metadata with `icy` package)
+- **System Tray Support** (Minimize to tray functionality)
+- **Compact Window Size** (Optimized for minimal screen space)
+- **Dark Purple Theme** (Eye-friendly color scheme)
 
 ## Installation
 
@@ -50,7 +53,7 @@ npm run package-win
 │── assets/
 │   ├── css/
 │   │   ├── bootstrap.min.css
-│   │   ├── style.css
+│   │   ├── custom.css
 │   ├── img/
 │   │   ├── lemon.png
 │   │   ├── lemon.ico
@@ -64,4 +67,24 @@ npm run package-win
 │── README.md
 │── LICENSE
 ```
+
+## Usage
+
+- **Minimize to Tray**: Click the minimize button to hide the app to the system tray
+- **Close Confirmation**: When clicking the close button, you'll be prompted to either close the app or minimize to tray
+- **Window Management**: Drag the window using the title bar
+- **Radio Selection**: Use the dropdown menu to select different radio stations
+- **Now Playing**: Current and next song information is displayed automatically
+
+## Development
+
+The app uses:
+- **Electron** for the desktop application framework
+- **Express.js** for the metadata server
+- **Bootstrap 5** for UI components
+- **Custom CSS** for Tesla-inspired styling
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
