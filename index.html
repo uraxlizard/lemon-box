@@ -3,70 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lemon Box - Български онлайн радио плейър с най-популярните радио станции">
+    <meta name="keywords" content="радио, българско радио, онлайн радио, radio player, lemon box">
+    <meta name="author" content="ZEN CODING GARDEN LTD">
+    <meta name="theme-color" content="#FFD700">
     <title>Lemon Box - Български Радио Плейър</title>
 
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="assets/css/custom.css" as="style">
+    <link rel="preload" href="assets/img/lemon.png" as="image">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/lemon.png">
+    
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     
+    <!-- Font Awesome for better icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
     <!-- External CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 <body>
+    <div class="app-container">
+        <!-- Title Bar -->
+        <header class="title-bar" role="banner">
+            <span class="d-flex align-items-center">
+                <img src="assets/img/lemon.png" alt="Lemon Box Logo" class="logo-img" width="32" height="32"> 
+                Lemon Box - Всички Български Радиа в Едно
+            </span>
+            <div class="window-controls">
+                <button class="control-btn minimize-btn" onclick="minimizeApp()" aria-label="Minimize window">
+                    <i class="fas fa-minus" aria-hidden="true"></i>
+                </button>
+                <button class="control-btn close-btn" onclick="window.close()" aria-label="Close window">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+        </header>
 
-    <div class="title-bar">
-        <span><img src="assets/img/lemon.png" alt="logo"> Lemon Box - Всички Български Радиа в Едно</span>
-        <button onclick="window.close()">✖</button>
-    </div>
+        <!-- Main Content Area -->
+        <main class="main-content" role="main">
+            <div class="content-wrapper">
+                <div class="radio-card">
+                    <!-- Equalizer Visualization -->
+                    <div class="equalizer-container" aria-hidden="true">
+                        <div class="equalizer">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
 
-    <div class="container d-flex justify-content-center">
-        <div class="card">
-            <h4 class="mb-3">Изберете Радио</h4>
+                    <h4 class="text-center">
+                        <i class="fas fa-broadcast-tower me-2" aria-hidden="true"></i>
+                        Изберете Радио
+                    </h4>
 
-            <!-- Custom Dropdown -->
-            <div class="custom-dropdown" id="dropdown">
-                <div class="dropdown-selected p-2" id="selectedStation">
-                    <span>--- Моля, изберете от радиата по-долу ---</span>
-                </div>                
-                <div class="dropdown-list mt-1 p-2" id="stationList">
-                    <div data-url="http://play.global.audio/nova128">
-                        <img src="assets/img/logos/radio-nova.png" alt="Radio Nova"> Radio Nova
+                    <!-- Custom Dropdown -->
+                    <div class="custom-dropdown" id="dropdown" role="combobox" aria-expanded="false" aria-haspopup="listbox">
+                        <div class="dropdown-selected" id="selectedStation" role="button" tabindex="0">
+                            <i class="fas fa-music me-2" aria-hidden="true"></i>
+                            <span>Изберете радио станция</span>
+                        </div>                
+                        <div class="dropdown-list" id="stationList" role="listbox">
+                            <div class="station-item" data-url="http://play.global.audio/nova128">
+                                <img src="assets/img/logos/radio-nova.png" alt="Radio Nova" class="station-logo"> 
+                                <span>Radio Nova</span>
+                                <div class="station-wave">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                            </div>
+                            <div class="station-item" data-url="http://play.global.audio/city128">
+                                <img src="assets/img/logos/city-radio.jpg" alt="City Radio" class="station-logo"> 
+                                <span>City Radio</span>
+                                <div class="station-wave">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                            </div>
+                            <div class="station-item" data-url="http://play.global.audio/radio1128">
+                                <img src="assets/img/logos/radio-1.jpg" alt="Radio 1" class="station-logo"> 
+                                <span>Radio 1</span>
+                                <div class="station-wave">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                            </div>
+                            <div class="station-item" data-url="http://play.global.audio/bgradio128">
+                                <img src="assets/img/logos/bg-radio.jpg" alt="BG Radio" class="station-logo"> 
+                                <span>BG Radio</span>
+                                <div class="station-wave">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                            </div>
+                            <div class="station-item" data-url="http://play.global.audio/nrj128">
+                                <img src="assets/img/logos/radio-energy.png" alt="NRJ" class="station-logo"> 
+                                <span>Radio Energy (NRJ)</span>
+                                <div class="station-wave">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                            </div>
+                            <div class="station-item" data-url="http://play.global.audio/veronika128">
+                                <img src="assets/img/logos/radio-veronika.jpg" alt="Veronika" class="station-logo"> 
+                                <span>Radio Veronika</span>
+                                <div class="station-wave">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div data-url="http://play.global.audio/city128">
-                        <img src="assets/img/logos/city-radio.jpg" alt="City Radio"> City Radio
-                    </div>
-                    <div data-url="http://play.global.audio/radio1128">
-                        <img src="assets/img/logos/radio-1.jpg" alt="Radio 1"> Radio 1
-                    </div>
-                    <div data-url="http://play.global.audio/bgradio128">
-                        <img src="assets/img/logos/bg-radio.jpg" alt="BG Radio"> BG Radio
-                    </div>
-                    <div data-url="http://play.global.audio/nrj128">
-                        <img src="assets/img/logos/radio-energy.png" alt="NRJ"> Radio Energy (NRJ)
-                    </div>
-                    <div data-url="http://play.global.audio/veronika128">
-                        <img src="assets/img/logos/radio-veronika.jpg" alt="Veronika"> Radio Veronika
+
+                    <div class="audio-player-wrapper">
+                        <audio id="radioPlayer" controls preload="none">
+                            <source src="http://play.global.audio/nova128" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
                     </div>
                 </div>
             </div>
+        </main>
 
-            <audio id="radioPlayer" controls class="mt-3">
-                <source src="http://play.global.audio/nova128" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
+        <!-- Footer -->
+        <footer class="footer-wrapper" role="contentinfo">
+            <div class="footer-content">
+                <p class="mb-0">
+                    © Всички права запазени 2025
+                    <span class="separator" aria-hidden="true">|</span>
+                    <span class="creator">Създадено от <strong>ZEN CODING GARDEN LTD</strong></span>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <span class="version">v1.1.0</span>
+                </p>
+            </div>
+        </footer>
     </div>
 
-    <footer>
-        <p>© Всички права запазени 2025<br />Създадено от <strong>ZEN CODING GARDEN LTD</strong><br />
-            Версия на приложението: v1.0
-        </p>
-    </footer>
-
     <!-- Bootstrap JS -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-
+    <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+    
     <!-- External Scripts -->
-    <script src="assets/js/scripts.js"></script>
-
+    <script src="assets/js/scripts.js" defer></script>
 </body>
 </html>

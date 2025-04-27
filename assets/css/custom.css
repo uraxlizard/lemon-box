@@ -1,0 +1,512 @@
+/* Base styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #f5f0ff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    min-height: 600px;
+    min-width: 500px;
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+    position: relative;
+}
+
+/* Title Bar */
+.title-bar {
+    background: linear-gradient(to right, #6b46c1, #553c9a);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.logo-img {
+    height: 32px;
+    width: auto;
+    margin-right: 12px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: #e74c3c;
+    transform: scale(1.1);
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 20px 80px 20px;
+    position: relative;
+    min-height: 500px;
+}
+
+.content-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Radio Card */
+.radio-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 25px rgba(107, 70, 193, 0.15);
+    padding: 25px;
+    width: 100%;
+    margin: 0 auto;
+    transition: transform 0.2s ease;
+    border: 1px solid rgba(107, 70, 193, 0.1);
+}
+
+.radio-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 25px rgba(107, 70, 193, 0.2);
+}
+
+.radio-card h4 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Custom Dropdown */
+.custom-dropdown {
+    position: relative;
+    border: 1px solid rgba(107, 70, 193, 0.2);
+    border-radius: 12px;
+    background: white;
+    z-index: 100;
+}
+
+.dropdown-selected {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    border-radius: 12px;
+    background: rgba(107, 70, 193, 0.03);
+}
+
+.dropdown-selected:hover {
+    background-color: rgba(107, 70, 193, 0.08);
+}
+
+.dropdown-selected img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dropdown-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid rgba(107, 70, 193, 0.2);
+    border-radius: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 4px 20px rgba(107, 70, 193, 0.15);
+    padding: 4px;
+    margin-top: 8px;
+}
+
+/* Station Items */
+.station-item {
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    margin: 3px 0;
+}
+
+.station-item:hover {
+    background-color: rgba(107, 70, 193, 0.08);
+    transform: translateX(5px);
+}
+
+.station-item:first-child {
+    border-radius: 8px;
+}
+
+.station-item:last-child {
+    border-radius: 8px;
+}
+
+.station-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Audio Player Section */
+.audio-player-wrapper {
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(107, 70, 193, 0.03);
+    border-radius: 15px;
+    box-shadow: inset 0 2px 6px rgba(107, 70, 193, 0.08);
+    border: 1px solid rgba(107, 70, 193, 0.1);
+}
+
+.now-playing {
+    margin: 18px 0 0 0;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #2c3e50;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+audio {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* Custom Audio Player Styling */
+audio::-webkit-media-controls-panel {
+    background-color: white;
+    border-radius: 8px;
+}
+
+audio::-webkit-media-controls-play-button {
+    background-color: #6b46c1;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+audio::-webkit-media-controls-play-button:hover {
+    background-color: #553c9a;
+    transform: scale(1.1);
+}
+
+/* Footer */
+.footer-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 90;
+    border-top: 1px solid rgba(107, 70, 193, 0.15);
+    padding: 5px 0;
+}
+
+.footer-content {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+}
+
+.separator {
+    color: rgba(107, 70, 193, 0.4);
+}
+
+.creator strong {
+    color: #6b46c1;
+    font-weight: 600;
+}
+
+.version {
+    color: #553c9a;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(193, 193, 193, 0.5);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(168, 168, 168, 0.8);
+}
+
+/* Dropdown Scrollbar */
+.dropdown-list::-webkit-scrollbar {
+    width: 4px;
+    height: 0;
+}
+
+.dropdown-list::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 4px;
+}
+
+.dropdown-list::-webkit-scrollbar-thumb {
+    background: rgba(193, 193, 193, 0.5);
+    border-radius: 2px;
+}
+
+/* Media Queries */
+@media (max-height: 800px) {
+    .main-content {
+        padding-bottom: 80px;
+    }
+    
+    .footer-content {
+        font-size: 0.8rem;
+        padding: 5px 0;
+    }
+    
+    .dropdown-list {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-wrapper {
+        max-width: 100%;
+    }
+    
+    .main-content {
+        padding: 20px 15px 80px 15px;
+    }
+    
+    .radio-card {
+        padding: 25px;
+        border-radius: 20px;
+    }
+    
+    .audio-player-wrapper {
+        padding: 20px;
+        margin-top: 25px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .separator {
+        display: none;
+    }
+}
+
+/* Adjust font sizes */
+.station-item span {
+    font-size: 1.05rem;
+}
+
+/* Add window size recommendation */
+@media (min-width: 600px) and (min-height: 800px) {
+    .app-container {
+        min-width: 600px;
+        min-height: 800px;
+    }
+}
+
+/* Window Controls */
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: white;
+    padding: 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.minimize-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+    transform: scale(1.1);
+}
+
+/* Equalizer Styles */
+.equalizer-container {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 8px;
+    background: rgba(107, 70, 193, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(107, 70, 193, 0.1);
+}
+
+.equalizer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 25px;
+}
+
+.equalizer .bar {
+    width: 4px;
+    background: linear-gradient(to top, #6b46c1, #553c9a);
+    border-radius: 2px;
+    animation: equalize 1.2s ease-in-out infinite;
+    transform-origin: bottom;
+}
+
+.equalizer .bar:nth-child(1) { height: 60%; animation-delay: -0.4s; }
+.equalizer .bar:nth-child(2) { height: 30%; animation-delay: -0.2s; }
+.equalizer .bar:nth-child(3) { height: 75%; animation-delay: 0.0s; }
+.equalizer .bar:nth-child(4) { height: 45%; animation-delay: 0.2s; }
+.equalizer .bar:nth-child(5) { height: 65%; animation-delay: 0.4s; }
+
+@keyframes equalize {
+    0% { transform: scaleY(0.8); }
+    50% { transform: scaleY(1); }
+    100% { transform: scaleY(0.8); }
+}
+
+/* Station Wave Animation */
+.station-wave {
+    display: flex;
+    gap: 3px;
+    margin-left: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.station-item:hover .station-wave {
+    opacity: 1;
+}
+
+.wave-bar {
+    width: 3px;
+    height: 15px;
+    background-color: #6b46c1;
+    animation: wave 0.5s ease-in-out infinite alternate;
+}
+
+.wave-bar:nth-child(1) { animation-delay: -0.4s; }
+.wave-bar:nth-child(2) { animation-delay: -0.2s; }
+.wave-bar:nth-child(3) { animation-delay: 0s; }
+
+@keyframes wave {
+    0% { transform: scaleY(0.3); }
+    100% { transform: scaleY(1); }
+}
+
+/* Now Playing Info */
+.now-playing-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding: 12px 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.now-playing-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3498db;
+    animation: pulse 2s infinite;
+}
+
+.now-playing-text {
+    flex: 1;
+    font-size: 0.95rem;
+    color: #2c3e50;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Responsive Adjustments for Equalizer */
+@media (max-width: 768px) {
+    .equalizer-container {
+        height: 40px;
+        margin-bottom: 20px;
+    }
+    
+    .equalizer {
+        height: 25px;
+        gap: 3px;
+    }
+    
+    .equalizer .bar {
+        width: 3px;
+    }
+}
+
+@media (max-height: 700px) {
+    .equalizer-container {
+        height: 30px;
+        margin-bottom: 15px;
+    }
+    
+    .now-playing-info {
+        padding: 8px 12px;
+        margin-bottom: 10px;
+    }
+}
+
+

@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedStation = document.getElementById("selectedStation");
     const stationList = document.getElementById("stationList");
     const radioPlayer = document.getElementById("radioPlayer");
-    const nowPlaying = document.createElement("p");
+    
+    // Create and style the now playing element
+    const nowPlaying = document.createElement("div");
     nowPlaying.classList.add("now-playing");
     radioPlayer.parentElement.appendChild(nowPlaying);
 
@@ -16,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "http://play.global.audio/veronika128": "veronika128"
     };
 
+    let currentUpdateInterval = null;
+
     function updateNowPlaying(streamUrl) {
         const stationID = stationIDs[streamUrl];
 
@@ -23,42 +27,73 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch(`http://localhost:3000/nowplaying/${stationID}`)
                 .then(response => response.json())
                 .then(data => {
-                    nowPlaying.innerHTML = `<strong>Сега звучи:</strong> ${data.nowPlaying || "Няма информация"}`;
+                    nowPlaying.innerHTML = `
+                        <i class="fas fa-music me-2"></i>
+                        <strong>Сега звучи:</strong> ${data.nowPlaying || "Няма информация"}
+                    `;
                 })
                 .catch(() => {
-                    nowPlaying.innerHTML = "Грешка при извличането на песента.";
+                    nowPlaying.innerHTML = `
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        Грешка при извличането на песента
+                    `;
                 });
         } else {
-            nowPlaying.innerHTML = "Няма налична информация за песента.";
+            nowPlaying.innerHTML = `
+                <i class="fas fa-info-circle me-2"></i>
+                Няма налична информация за песента
+            `;
         }
     }
 
-    dropdown.addEventListener("click", () => {
+    // Toggle dropdown
+    selectedStation.addEventListener("click", (e) => {
+        e.stopPropagation();
         stationList.style.display = stationList.style.display === "block" ? "none" : "block";
+        
+        // Add active class for visual feedback
+        selectedStation.classList.toggle('active');
     });
 
-    stationList.querySelectorAll("div").forEach(station => {
-        station.addEventListener("click", function () {
+    // Handle station selection
+    stationList.querySelectorAll(".station-item").forEach(station => {
+        station.addEventListener("click", function() {
             const newUrl = this.getAttribute("data-url");
-            const stationName = this.innerText;
+            const stationName = this.querySelector("span").textContent;
             const stationIcon = this.querySelector("img").src;
 
-            selectedStation.innerHTML = `<img src="${stationIcon}" alt="${stationName}" width="24"> <span>${stationName}</span>`;
+            // Update selected station display
+            selectedStation.innerHTML = `
+                <img src="${stationIcon}" alt="${stationName}" class="station-logo">
+                <span>${stationName}</span>
+            `;
+
+            // Update audio player
             radioPlayer.src = newUrl;
             radioPlayer.play();
+            
+            // Hide dropdown
             stationList.style.display = "none";
+            selectedStation.classList.remove('active');
 
+            // Clear existing interval and set new one
+            if (currentUpdateInterval) {
+                clearInterval(currentUpdateInterval);
+            }
+            
             updateNowPlaying(newUrl);
-            setInterval(() => updateNowPlaying(newUrl), 30000);
+            currentUpdateInterval = setInterval(() => updateNowPlaying(newUrl), 30000);
         });
     });
 
+    // Close dropdown when clicking outside
     document.addEventListener("click", (event) => {
         if (!dropdown.contains(event.target)) {
             stationList.style.display = "none";
+            selectedStation.classList.remove('active');
         }
     });
 
-    // Auto-fetch metadata for the first station on load
+    // Initialize with first station metadata
     updateNowPlaying(radioPlayer.src);
 });

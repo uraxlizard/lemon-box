@@ -14,24 +14,32 @@
     "appId": "com.zencodinggardenltd.lemonbox",
     "productName": "Lemon Box",
     "win": {
-        "target": "nsis",
-        "icon": "assets/img/lemon.ico"
+      "target": "nsis",
+      "icon": "assets/img/lemon.ico"
     },
     "files": [
-        "!node_modules/electron-reload/**",
-        "!node_modules/.cache/**",
-        "!dist/**",
-        "main.js",
-        "server.js",
-        "index.html",
-        "assets/**"
+      "!node_modules/electron-reload/**",
+      "!node_modules/.cache/**",
+      "!dist/**",
+      "main.js",
+      "server.js",
+      "index.html",
+      "assets/**"
     ],
     "extraResources": [
-        {
-            "from": "server.js",
-            "to": "server.js"
-        }
-    ]
+      {
+        "from": ".",
+        "to": "app",
+        "filter": [
+          "server.js",
+          "node_modules/**"
+        ]
+      }
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    }
   },
   "keywords": [],
   "author": "Angel Boyarov",
@@ -39,6 +47,7 @@
   "description": "Bulgarian Radio Player",
   "dependencies": {
     "cors": "^2.8.5",
+    "electron-squirrel-startup": "^1.0.1",
     "express": "^4.21.2",
     "icy": "^2.1.0"
   },
